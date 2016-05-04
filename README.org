@@ -1,0 +1,38 @@
+#+TITLE: README
+#+AUTHOR: VLEAD
+#+DATE: [2016-04-28 Thu]
+#+PROPERTY: results output
+#+PROPERTY: exports code
+#+options: ^:nil
+
+
+* Install & Configure Git
+- Configuration
+ + Edit the file using below command
+#+begin_example
+vim scripts/configure.sh
+#+end_example
+- To configure proxy replace =yourproxy= with appropriate values 
+#+begin_example
+http_proxy=yourproxy
+https_proxy=yourproxy
+#+end_example
+- To configure git please replace =gitusername= and =gitemail= with appropriate values
+#+begin_example
+git_username=gitusername
+git_email=gitemail
+#+end_example
+- Run the script
+#+begin_example
+cd scripts
+chmod +x setup_git.sh
+./setup_git.sh
+#+end_example
+* Install & Configure emacs
+
+
+
+* Pit Shop for all Interns
+
+  This repository will hold information to help interns to get on-board to
+  Virtual Labs processes, practices,
