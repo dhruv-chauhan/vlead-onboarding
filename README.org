@@ -24,15 +24,76 @@ git_email=gitemail
 #+end_example
 - Run the script
 #+begin_example
+sudo su -
 cd scripts
-chmod +x setup_git.sh
-./setup_git.sh
+chmod +x install_git.sh
+./install_git.sh
 #+end_example
-* Install & Configure emacs
+* Install GNU emacs
+- Run the script
+#+begin_example
+sudo su -
+cd scripts
+chmod +x install_emacs.sh
+./install_emacs.sh
+#+end_example
+- While script is running it will ask for various confirmation please give a confirmation as below
+- Postfix Configuration - =Ok=
+- Out of list please select =No Configuration=
+- Should I create a default set of package docs? Say =n= and press enter
+- Press enter
+- Press enter
+- Copying files to the temparory directory ( 5 mins)
+** Configuring Emacs for Python Development
+*** Installing python package
+- Setting .emacs for pacakges
+  + Insert the below lines ~/.emacs
+
+#+begin_example
+
+(require 'package)
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;;(require 'package)
+;;(setq package-archives '(("org" . "http://orgmode.org/elpa/")
+;;      ("gnu" . "http://elpa.gnu.org/packages/")
+;;      ("marmalade" . "http://marmalade-repo.org/packages/")
+;;      ("melpa" . "http://melpa.milkbox.net/packages/")))
+
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(package-initialize)
+#+end_example
+*** Installing =pytho-mode= package in emacs
+- List all the packages in emacs using command
+#+begin_example
+M-x package-list-packages
+#+end_example
+- The above step will list the packages in a window.  Search for
+  =python-mode= and install this package After installation, stick the
+  below snippet in .emacs file to enable python mode
+
+#+begin_example
+(load-library "python")
+
+(autoload 'python-mode "python-mode" "Python Mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 
-
-* Pit Shop for all Interns
-
-  This repository will hold information to help interns to get on-board to
-  Virtual Labs processes, practices,
+#+end_example
+*** Auto complete for python
+- List all the packages in emacs using command
+#+begin_example
+M-x package-list-packages
+#+end_example
+- The above step will list the packages in a window.  Search for
+  =jedi= and =jedi-core= install these two packages After installation, stick the
+  below snippet in .emacs file to enable =auto-complete-mode=
+#+begin_example
+;; auto complete for python
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)                      ; optional
+(setq jedi:complete-on-dot t)                 ; optional
+#+end_example

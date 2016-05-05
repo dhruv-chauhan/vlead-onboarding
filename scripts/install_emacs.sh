@@ -12,7 +12,7 @@ else
     echo "########### ERRO IN UPDATING SYSTEM ###########"
     exit
 fi
-sudo apt-get build-dep emacs24
+sudo apt-get -y build-dep emacs24
 if [ $? -eq 0 ]
 then
     echo "######### Dependencies installed ###########"
@@ -22,7 +22,7 @@ else
     exit 1
 fi
 
-sudo apt-get install checkinstall
+sudo apt-get -y install checkinstall
 if [ $? -eq 0 ]
 then
     echo "######### Dependencies installed ###########"
