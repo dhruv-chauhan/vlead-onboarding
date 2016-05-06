@@ -37,7 +37,7 @@ vim configure.sh
 http_proxy=yourproxy
 https_proxy=yourproxy
 #+end_example
-- To configure git please replace =gitusername= and =gitemail= with appropriate values
+- To configure git please replace =username= and =email= with appropriate values
 #+begin_example
 git_username=gitusername
 git_email=gitemail
