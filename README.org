@@ -61,9 +61,9 @@ emacs &
 #+end_example
 - List all the available packages on emacs and click on package to install.
 #+begin_example
-emacs &
+M-x packages-list-packages
 #+end_example
-- Form available packages install following
+- From available packages install the following
  + column-marker
  + yasnippet
  + quack
@@ -74,5 +74,5 @@ emacs &
  + flycheck
  + python-mode
  + pylint
-- Close the emacs and reopen
+- Close the emacs and reopen to check applied changes
 
