@@ -12,7 +12,7 @@
      set to =http_proxy= and =https_proxy= variables
  #+BEGIN_SRC shell :tangle configure.sh :eval no
  #!/bin/bash
- http_proxy=yourproxy
+http_proxy=yourproxy
 httsp_proxy=yourproxy
 #+END_SRC
 ** Updating system
@@ -78,12 +78,23 @@ else
 fi
 #+END_SRC
 #+BEGIN_SRC shell :tangle install_emacs.sh :eval no
-sudo apt-get -y install checkinstall
+sudo apt-get -y install pylint
 if [ $? -eq 0 ]
 then
-    echo "######### Dependencies installed ###########"
+    echo "######### Dependency pylint is installed ###########"
 else
-    echo "######## Erro in installing checkinstall ########"
+    echo "######## Erro in installing pylint  dependency #####"
+    exit 1
+fi
+#+END_SRC
+
+#+BEGIN_SRC shell :tangle install_emacs.sh :eval no
+sudo apt-get -y install python-virtualenv
+if [ $? -eq 0 ]
+then
+    echo "######### Dependencies python-virtualenv is installed ###########"
+else
+    echo "######## Erro in installing python-virtualenv ########"
     exit 1
 fi
 #+END_SRC
