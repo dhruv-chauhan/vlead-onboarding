@@ -1,18 +1,38 @@
-#+TITLE: README
-#+AUTHOR: VLEAD
+#+TITLE: READ ME
+#+AUTHOR: Sripathi Kammari
 #+DATE: [2016-04-28 Thu]
 #+PROPERTY: results output
 #+PROPERTY: exports code
 #+options: ^:nil
 
 
-* Install & Configure Git
-- Configuration
- + Edit the file using below command
+* Introduction
+This repository contains the automated scripts to install, configure =Git= , =emacs=
+and for setting up emacs IDE for =python= and =javascript= development.
+* Running =make= file
+- Clone the repository
 #+begin_example
-vim scripts/configure.sh
+git clone https://github.com/vlead/vlead-onboarding.git
 #+end_example
-- To configure proxy replace =yourproxy= with appropriate values 
+
+- Change directory to cloned repository
+#+begin_example
+cd vlead-onboarding
+#+end_example
+- Run =make= command
+#+begin_example
+make
+#+end_example
+- Change directory to =scripts= folder
+#+begin_example
+cd build/scripts
+#+end_example
+
+- To configure proxy open file using
+#+begin_example
+vim configure.sh
+#+end_example
+- Replace =yourproxy= with appropriate values 
 #+begin_example
 http_proxy=yourproxy
 https_proxy=yourproxy
@@ -24,18 +44,8 @@ git_email=gitemail
 #+end_example
 - Run the script
 #+begin_example
-sudo su -
-cd scripts
-chmod +x install_git.sh
-./install_git.sh
-#+end_example
-* Install GNU emacs
-- Run the script
-#+begin_example
-sudo su -
-cd scripts
-chmod +x install_emacs.sh
-./install_emacs.sh
+chmod +x all.sh
+./all.sh
 #+end_example
 - While script is running it will ask for various confirmation please give a confirmation as below
 - Postfix Configuration - =Ok=
@@ -43,57 +53,26 @@ chmod +x install_emacs.sh
 - Should I create a default set of package docs? Say =n= and press enter
 - Press enter
 - Press enter
-- Copying files to the temparory directory ( 5 mins)
-** Configuring Emacs for Python Development
-*** Installing python package
-- Setting .emacs for pacakges
-  + Insert the below lines ~/.emacs
-
+- Copying files to the temparory directory ( 5-10 mins)
+- Once installation is done
+- Open emacs using command
 #+begin_example
-
-(require 'package)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-;;(require 'package)
-;;(setq package-archives '(("org" . "http://orgmode.org/elpa/")
-;;      ("gnu" . "http://elpa.gnu.org/packages/")
-;;      ("marmalade" . "http://marmalade-repo.org/packages/")
-;;      ("melpa" . "http://melpa.milkbox.net/packages/")))
-
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(package-initialize)
+emacs &
 #+end_example
-*** Installing =pytho-mode= package in emacs
-- List all the packages in emacs using command
+- List all the available packages on emacs and click on package to install.
 #+begin_example
-M-x package-list-packages
+emacs &
 #+end_example
-- The above step will list the packages in a window.  Search for
-  =python-mode= and install this package After installation, stick the
-  below snippet in .emacs file to enable python mode
+- Form available packages install following
+ + column-marker
+ + yasnippet
+ + quack
+ + ox-reveal
+ + js2-mode
+ + auto-complete
+ + jedi
+ + flycheck
+ + python-mode
+ + pylint
+- Close the emacs and reopen
 
-#+begin_example
-(load-library "python")
-
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-
-
-#+end_example
-*** Auto complete for python
-- List all the packages in emacs using command
-#+begin_example
-M-x package-list-packages
-#+end_example
-- The above step will list the packages in a window.  Search for
-  =jedi= and =jedi-core= install these two packages After installation, stick the
-  below snippet in .emacs file to enable =auto-complete-mode=
-#+begin_example
-;; auto complete for python
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:setup-keys t)                      ; optional
-(setq jedi:complete-on-dot t)                 ; optional
-#+end_example
