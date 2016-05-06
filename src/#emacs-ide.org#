@@ -1,9 +1,11 @@
+* Reading proxy values from =configure.sh= file
 #+BEGIN_SRC shell :tangle install_emacs.sh :eval no
 #!/bin/bash
 source config.sh
 export $http_proxy
 export $httsp_proxy
 #+END_SRC
+* Updating 
 #+BEGIN_SRC shell :tangle install_emacs.sh :eval no
 echo "######### UPDATING SYSTEM #########"
 sudo apt-get -y update

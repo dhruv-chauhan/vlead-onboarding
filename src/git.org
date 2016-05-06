@@ -1,4 +1,4 @@
-#+TITLE: Back end for Outreach Portal 
+#+TITLE: Install Git & Configure 
 #+AUTHOR: VLEAD
 #+DATE: [2015-10-27 Tue]
 #+PROPERTY: results output
@@ -6,13 +6,15 @@
 #+SETUPFILE: ../org-templates/level-1.org
 #+options: ^:nil
 
-* Exporting proxy and updating system
+* Reading proxy values from =config.sh= file and exporting
 #+BEGIN_SRC shell :tangle install_git.sh :eval no
 #!/bin/bash
 source config.sh
 export $http_proxy
 export $httsp_proxy
-
+#+END_SRC
+* Updating system
+#+BEGIN_SRC shell :tangle install_git.sh :eval no
 echo "######### UPDATING SYSTEM #########"
 sudo apt-get -y update
 if [ $? -eq 0 ]
@@ -22,11 +24,8 @@ else
     echo "########### ERRO IN UPDATING SYSTEM ###########"
     exit
 fi
-
 #+END_SRC
-
-
-
+* Installing git version controll
 #+BEGIN_SRC shell :tangle install_git.sh :eval no
 ####### GIT INSTALLATION #######
 echo "######### INSTALLING GIT #########"
@@ -39,14 +38,14 @@ else
     echo "########### ERRO IN INSTALLING GIT ###########"
     exit 1
 fi
-
+#+END_SRC
+* Git configuration
+- Read =$git_username= and =$git_email= variables from =configure.sh= file
+#+BEGIN_SRC shell :tangle install_git.sh :eval no
 ##### GIT CONFIGURATION ######
 git config --global user.name $git_username
 git config --global user.email $git_email
 echo "######## GIT CONFIGURATION IS DONE ########"
-
-
 echo "######### EXITING #########"
-
 exit
 #+END_SRC
