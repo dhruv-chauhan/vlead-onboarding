@@ -1,3 +1,7 @@
+- Clone the repository
+#+begin_example
+git clone https://github.com/vlead/vlead-onboarding.git
+#+end_example
 - Change directory to =scripts= folder
 #+begin_example
 cd vlead-onboarding/build/code/src/scripts
