@@ -1,6 +1,6 @@
 - Change directory to =scripts= folder
 #+begin_example
-cd build/scripts
+cd vlead-onboarding/build/code/src/scripts
 #+end_example
 
 - To configure proxy open file using
