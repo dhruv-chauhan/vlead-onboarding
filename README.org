@@ -14,8 +14,9 @@ and for setting up emacs IDE for =python= and =javascript= development.
 #+begin_example
 git clone https://github.com/vlead/vlead-onboarding.git
 #+end_example
-
+- Install pre-requistes please refer to document here [[https://github.com/vlead/vlead-onboarding/blob/develop/src/installation.org]]
 - Change directory to cloned repository
+
 #+begin_example
 cd vlead-onboarding
 #+end_example
@@ -23,56 +24,3 @@ cd vlead-onboarding
 #+begin_example
 make
 #+end_example
-- Change directory to =scripts= folder
-#+begin_example
-cd build/scripts
-#+end_example
-
-- To configure proxy open file using
-#+begin_example
-vim configure.sh
-#+end_example
-- Replace =yourproxy= with appropriate values 
-#+begin_example
-http_proxy=yourproxy
-https_proxy=yourproxy
-#+end_example
-- To configure git please replace =username= and =email= with appropriate values
-#+begin_example
-git_username=gitusername
-git_email=gitemail
-#+end_example
-- Run the script
-#+begin_example
-chmod +x all.sh
-./all.sh
-#+end_example
-- While script is running it will ask for various confirmation please give a confirmation as below
-- Postfix Configuration - =Ok=
-- Out of list please select =No Configuration=
-- Should I create a default set of package docs? Say =n= and press enter
-- Press enter
-- Press enter
-- Copying files to the temparory directory ( 5-10 mins)
-- Once installation is done
-- Open emacs using command
-#+begin_example
-emacs &
-#+end_example
-- List all the available packages on emacs and click on package to install.
-#+begin_example
-M-x packages-list-packages
-#+end_example
-- From available packages install the following
- + column-marker
- + yasnippet
- + quack
- + ox-reveal
- + js2-mode
- + auto-complete
- + jedi
- + flycheck
- + python-mode
- + pylint
-- Close the emacs and reopen to check applied changes
-
