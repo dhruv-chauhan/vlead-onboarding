@@ -14,7 +14,7 @@ and for setting up emacs IDE for =python= and =javascript= development.
 #+begin_example
 git clone https://github.com/vlead/vlead-onboarding.git
 #+end_example
-- Install pre-requistes please refer to document here [[https://github.com/vlead/vlead-onboarding/blob/develop/src/installation.org]]
+- To install pre-requistes please refer to the document available [[https://github.com/vlead/vlead-onboarding/blob/develop/src/installation.org][here]]
 - Change directory to cloned repository
 
 #+begin_example
