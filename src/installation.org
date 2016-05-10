@@ -1,17 +1,20 @@
-- Clone the repository
+- Download the build file
 #+begin_example
-git clone https://github.com/vlead/vlead-onboarding.git
+wget http://files.vlabs.ac.in/downloads/build.tar
+#+end_example
+- Untar the build folder
+#+begin_example
+tar xvf build.tar
 #+end_example
 - Change directory to =scripts= folder
 #+begin_example
-cd vlead-onboarding/build/code/src/scripts
+cd build/code/src/scripts
 #+end_example
-
 - To configure proxy open file using
 #+begin_example
 vim configure.sh
 #+end_example
-- Replace =yourproxy= with appropriate values 
+- If you are using proxy settings please relace =yourproxy= with appropriate values, if you are not using comment below lines using =#= 
 #+begin_example
 http_proxy=yourproxy
 https_proxy=yourproxy
