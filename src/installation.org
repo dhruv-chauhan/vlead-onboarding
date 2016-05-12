@@ -6,6 +6,8 @@
 #+SETUPFILE: ./org-templates/level-0.org
 #+options: ^:nil
 
+(*Pre requisites :* The following steps will work on /Ubuntu14.04 x86_64/ OS.
+
   1. Download the /emacs-as-ide.tar/ file (Ignore if alraady downloaded)
      #+begin_example
      wget http://files.vlabs.ac.in/downloads/emacs-as-ide.tar
