@@ -10,6 +10,12 @@
 This document allows a new joinee to get acquainted with the processes and
 development environment. 
 
+* Version Control using GIT
+* Emacs editor
+* Org Mode
+* Development Process
+* Application Development and integration levels
+* Virtualization
 * Install Git and Setup Emacs as an IDE
   This [[./installation-scripts/index.org][document]] lists all the steps to install git and emacs and configure
   emacs as an integrated development environment.
