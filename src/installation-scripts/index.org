@@ -65,8 +65,16 @@ git config --global user.name $git_username
 git config --global user.email $git_email
 
 #+END_SRC
+** Configure =bash= to detect =git= branch
+   - Configure bash terminal to display the working branch of the
+     repository. This is useful when repository has multiple branches.
+#+BEGIN_SRC shell :tangle ../src/install_git.sh :eval no
+echo "parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}" >> ~/.bashrc
+echo 'export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ " ' >> ~/.bashrc
+#+END_SRC 
    
-
 * Installation of Emacs
 ** Install dependencies
    Before installing =emacs24.5.10= version we need to install all required
