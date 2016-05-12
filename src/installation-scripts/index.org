@@ -78,8 +78,7 @@ echo 'export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ " ' >> 
 * Installation of Emacs
 ** Install dependencies
    Before installing =emacs24.5.10= version we need to install all required
-   dependency packages. They are =build-dep= and =checkinstall=.
-
+   dependency packages. They are =build-dep= and =checkinstall=. For more info please visit [[http://askubuntu.com/questions/701448/how-to-install-the-latest-emacs-in-12-04][here]]
 #+BEGIN_SRC shell :tangle ../src/install_emacs.sh :eval no
 #!/bin/bash
 sudo apt-get -y build-dep emacs24
@@ -91,6 +90,9 @@ else
     exit 1
 fi
 #+END_SRC
+** Install /pylint/ package
+   - Pylint is a package which uses Python's PEP8 style to format the python code for more
+     info visit [[http://liuluheng.github.io/wiki/public_html/Python/flycheck-pylint-emacs-with-python.html][here]]
 
 #+BEGIN_SRC shell :tangle ../src/install_emacs.sh :eval no
 sudo apt-get -y install pylint
@@ -99,10 +101,12 @@ then
     echo "######### Dependency pylint is installed ###########"
 else
     echo "######## Erro in installing pylint  dependency #####"
-    exit 1
+    
 fi
 #+END_SRC
-
+** Install /python-virtualenv/ package
+   - /python-virtualenv/ is a packages which is allowed to create
+     virtual environments of different versions of python
 #+BEGIN_SRC shell :tangle ../src/install_emacs.sh :eval no
 sudo apt-get -y install python-virtualenv
 if [ $? -eq 0 ]
@@ -110,7 +114,7 @@ then
     echo "######### Dependencies python-virtualenv is installed ###########"
 else
     echo "######## Erro in installing python-virtualenv ########"
-    exit 1
+    
 fi
 #+END_SRC
 
