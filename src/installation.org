@@ -6,17 +6,19 @@
 #+SETUPFILE: ./org-templates/level-0.org
 #+options: ^:nil
 
-  1. Download the build file
+(*Pre requisites :* The following steps will work on /Ubuntu14.04 x86_64/ OS.
+
+  1. Download the /emacs-as-ide.tar/ file (Ignore if alraady downloaded)
      #+begin_example
-     wget http://files.vlabs.ac.in/downloads/build.tar
+     wget http://files.vlabs.ac.in/downloads/emacs-as-ide.tar
      #+end_example
 
-  2. Untar the build folder
+  2. Untar the /emacs-as-ide.tar/ file
      #+begin_example
-     tar xvf build.tar
+     tar xvf emacs-as-ide.tar
      #+end_example
 
-  3. Change directory to =scripts= folder
+  3. Change directory to =src= folder
      #+begin_example
      cd build/code/src/
      #+end_example
@@ -75,6 +77,7 @@
      + js2-mode
      + auto-complete
      + jedi
+     + jedi:install-server
      + flycheck
      + python-mode
      + pylint
