@@ -1,4 +1,4 @@
-#+TITLE:  
+#+TITLE: On-boarding for 2016 Summer Interns
 #+AUTHOR: VLEAD
 #+DATE: [2015-10-27 Tue]
 #+PROPERTY: results output
@@ -11,11 +11,351 @@ This document allows a new joinee to get acquainted with the processes and
 development environment. 
 
 * Version Control using GIT
+  Version Control systems help us manage the code for a project as it
+  changes over time. They allow past versions of the project to be
+  saved in case new changes break things. They also have quite a few
+  other features and are often quite complex but as a simplification
+  you can think of them as a way to backup code and share it between
+  different people.  Version control systems free us from such a
+  tedious process of remembering the different versions and what they
+  exactly contained.  It is a smart system in which the files we want
+  to keep several versions of are tracked and given unique commit ids
+  to refer to them. This helps in maintaining a single document that
+  you are working on to avoid multiple copies of the same.
+**  GitHub is a Web-based Git repository hosting service. It offers all
+   of the distributed revision control and source code management
+   (SCM) functionality of Git as well as adding its own
+   features. Unlike Git, which is strictly a command-line tool, GitHub
+   provides a Web-based graphical interface and desktop as well as
+   mobile integration. It also provides access control and several
+   collaboration features such as bug tracking, feature requests, task
+   management, and wikis for every project.
+
+   GitHub offers both plans for private repositories and free accounts,
+   which are usually used to host open-source software projects. As of
+   2015, GitHub reports having over 11 million users and over 29.4
+   million repositories, making it the largest host of source code in the
+   world. To now more about Github [[click here]]
+** Bitbucket 
+   Bitbucket is a web-based hosting service for projects that use
+   either the Mercurial (since launch) or Git (since October 2011)
+   revision control systems. Bitbucket offers both commercial plans
+   and free accounts. It offers free accounts with an unlimited number
+   of private repositories (which can have up to five users in the
+   case of free accounts) as of September 2010, but by inviting three
+   users to join Bitbucket, three more users can be added, for eight
+   users in total. Bitbucket is written in Python using the Django web
+   framework.  It is similar to GitHub, which primarily uses Git. To
+   know more about Bitbucket [[click here]]
+** Version control practices at VLEAD
+   At VLEAD version control is used extensively. Both Github and
+   Bitbucket are used. The purpose for which they are used differ
+   slightly and the differences are elicited below. 
+*** Github
+    At VLEAD we have two organizations hosted on Github namely vlead
+    and Virtual-labs. The basis of these organizations is mentioned
+    below. 
+**** "vlead" organization
+     This organization comprises of repositories which are services
+     built at VLEAD and are opensource. Each service has its own
+     repository and a dedicated issue tracker provided by github to
+     track issues in these services. The intent of putting information
+     and the code-base of these services on github is to facilitate
+     contribution. The members of this organization belong to VLEAD.
+**** "Virtual-labs" organization
+     This organization holds repositories of the all the virtual-labs
+     which were developed by all the contributing institutes. Each lab
+     has its own repository which contains the codebase and related
+     documents of the lab. These labs are also opensource and
+     facilitate contribution. The members of this organization belong
+     to VLEAD and other participating institutes ex: IIT-K, IIT-B etc.
 * Emacs editor
+  [[https://www.gnu.org/software/emacs/][GNU Emacs]] is an extensible, customizable text editor. Org is the
+  file extension or format generated when Emacs editor is used.
 * Org Mode
+   [[http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html#orgheadline5][Org mode]] is an editing and organizing mode for notes, planning, and
+   authoring in the free software text editor [[https://www.gnu.org/software/emacs/][Emacs]]. The name is used
+   to encompass plain text files ("org files") that include simple
+   marks to indicate levels of a hierarchy (which could be the outline
+   of an essay, a topic list with subtopics, nested computer code,
+   ...), and an editor with functions that can read the markup and
+   manipulate hierarchy elements (expand/hide elements, move blocks of
+   elements, check off to-do list items etc.  
+   This [[https://www.gnu.org/software/emacs/manual/html_node/org/][manual]] details out the extensive features and usage of org mode.
+
 * Development Process
+  This [[http://nvie.com/posts/a-successful-git-branching-model/][post]] has an elaborate discussion on a successful release
+  management using git. This [[http://vlabs-dev.vlabs.ac.in/community/processes.html][document]] describes the entire development
+  process carried out at VLEAD in detail in [[http://www.literateprogramming.com/knuthweb.pdf][literate]] style.
+** Code Review Process
+*** What is Code Review ?
+- Code review is systematic examination (sometimes referred to as peer
+  review) of computer source code.
+*** Why is Code Review needed ?
+- It is intended to find mistakes overlooked in the initial
+  development phase, improving the overall quality of software.
+*** How to initiate a Code Review ?
+- Reviews are done in various forms such as Lightweight reviews and Formal Inspections
+*** Lightweight Code Reviews 
+**** Pair Programming
+- Two authors develop code together at the same workstation, as it is
+  common in Extreme Programming.
+**** Informal Walkthroughs
+- One developer looks over the author's shoulder as the latter walks
+  through the code.
+**** Github Pull Requests
+- Online software repositories based Git or others allow groups of
+  individuals to collaboratively review code. Every developer develops
+  in his own branch and each branch has to be merged to develop branch
+  with a pull request. At this point it is developers reponsibility to
+  intimate all the people required to provide comments on this code
+  review. See how to use [[https://help.github.com/articles/using-pull-requests/][github pull requests workflow]] for code review.
+**** Tool-assisted code review
+- Authors and reviewers use software tools, informal ones such as
+  pastebins and IRC, or specialized tools designed for peer code
+  review.
+*** Formal Inspections
+- Inspection in software engineering, refers to peer review of any
+  work product by trained individuals who look for defects using a
+  well defined process. An inspection might also be referred to as a
+  Fagan inspection after Michael Fagan, the creator of a very popular
+  software inspection process.
+*** What to look for in a Code Review ?
+**** General Principles
+   -The core imperative is to organise complexity.
+   -Clarity and readability is central. “Intention Revealing”
+   -Do not prematurely optimise for performance.
+   -Do not repeat yourself. Never copy-and-paste code.
+   -Always try to leave the code you work on in a better state than before you started (the ‘boy scout’ principle)
+**** Keep the source clean
+   -Use source code linting. 
+   -Always delete unused code. Including variables and using statements
+   -Don’t comment out code, delete it. We have source control to manage change.
+**** Naming things
+   - The name should accurately describe what the thing does.
+   - Do not use shortenings, only use well understood abbreviations.
+   - If the name looks awkward, the code is probably awkward.
+**** Namespaces
+   - Namespaces should match the project name + path inside the
+     project. This is what VS will give you by default.
+   - Classes that together provide similar functions should be grouped
+     in a single namespace.
+   - Avoid namespace dependency cycles.
+**** Variables
+   -Use constants where possible. Avoid magic strings.
+   -Use readonly where possible
+   -Avoid many temporary variables.
+   -Never use a single variable for two different puposes.
+   -Keep scope as narrow as possible. (declaration close to use)
+**** Methods
+   -The name should accurately describe what the method does.
+   -It should only do one thing.
+   -It should be small (more than 10 lines of code is questionable).
+   -The number of parameters should be small.
+   -Public methods should validate all parameters.
+   -Assert expectations and throw an appropriate error if invalid.
+   -Avoid deep nesting of loops and conditionals. (Cyclomatic complexity).
+**** Classes
+   - The name should accurately describe what the class does.
+   - Classes typically represent data or services, be clear which your class is.
+   - Design your object oriented schema deliberately.
+   - A class should be small.
+   - A class should have one responsibility only.
+   - A class should have a clear contract.
+   - A class should be decoupled from its dependencies.
+   - Favour composition over inheritance.
+   - Avoid static classes and methods.
+   - Make the class immutable if possible.
+**** Interfaces
+   -Rely on interfaces rather than concrete classes wherever possible.
+   -An interface is a contract for interaction.
+   -An interface should have a single purpose (ISP)
+**** Tests
+   -All code should have unit tests if possible.
+   -Test code should have the same quality as production code.
+   -Write code test-first wherever possible.
+**** Error Handling
+   -Only wrap code with a try..catch statement if you are expecting it to throw a specific exception.
+   -Unexpected errors should only be handled at process boundaries.
+   -Never ‘bury’ exceptions.
+
 * Application Development and integration levels
+** Directory structure of lab sources
+
+|-- README.txt
+|-- scripts
+|   |-- backup
+|   |-- labspec.json
+|   |-- restore
+|   |-- startup
+|   |-- stop
+|   `-- test
+|-- src
+|-- tests
+
+** Integration Levels
+
+*** Level 0 
+   Lab does not adhere to any of the integration critetia
+
+*** Level 1 :: Versioned
+   Complete sources are versioned at an available location. 
+
+*** Level 2 :: Buildable
+   Sources conform to a lab development kit. They are buildable through scripts.
+
+*** Level 3 :: Testable
+   Lab has unit and integration tests and is testable on a central test server.
+
+*** Level 4 :: Hostable
+   Lab is deployable on a central hosting server
+
+*** Level 5 :: Automated Deployment of a Lab
+   Lab is supported by a specification and scripts for automated deployment
+   
+   At this level, the lab gets deployed on a machine without manual
+   intervention.  The specification for deployment is in place which is the
+   input to the deployment service.
+   
+   The deployment specification will capture all the steps that are required
+   to deploy a lab.
+   
+*** Level 6 :: Life-Cycle Management
+   Lab is supported by a set of scripts for life-cycle management of lab. 
+   Life
+
+    Life cycle management is the ability to perform these tasks on a lab:
+    start, stop, backup, restore from a previous backup and test.  Having such
+    functionality helps continuous releases of the software running the lab.
+    This management of a lab is achieved through the following bunch of
+    scripts. These scripts are developed by the integrator.
+
+** Structure of the scripts 
+
+>-- README.txt
+>-- scripts/
+    >-- start
+    >-- stop
+    >-- backup
+    >-- restore
+    >-- test
+    >-- labspec.json
+    >--  
+    >---
+>--src/
+>--tests/
+    
+*** Scripts
+**** Start a Lab
+     Script =start= provides a mechanism to start databases, web server,
+     application defined services and populating data stores that are required
+     for the lab to work.  The script ensures all services are started and the
+     dependencies of the lab are initialized in the right order.
+
+**** Stop a Lab
+     Script =stop= stops the lab from running.  This script does a clean
+     termination of all the processes and services initiated by the lab.  This
+     script backs up the relevant data and state information that is necessary
+     to bring back the lab to the state it was in before termination.
+
+**** Back up a Lab
+     Script =backup= captures and saves the relevant data that is essential to
+     bring the lab to the same state it was in at the time of backup.  The
+     relevant data could vary with each version of lab software released.  A
+     subset of relevant data is user information, configuration, user files and
+     databases.
+
+     There is a high possibility that this relevant data varies with each
+     version of lab software.  Therefore, when a backup is made, it is ensured
+     that the version of lab software is also captured.
+
+     This script is required for: disaster recovery, enable newer
+     versions of lab deployment by retaining the old data, regular backups,
+     etc.
+     
+     When the =backup= script is executed, a single file is generated in the
+     same directoy.  The version of the lab software is appended to the
+     generated file. The file is named =labbackup-<version>.tar=.  Example
+     values of =<version>= are =v1.0=, =v1.0.1= , etc.  More information on
+     versioning/tagging is available [[http://git-scm.com/book/en/v2/Git-Basics-Tagging][here]].
+
+     If there is no backup required for a lab, the script should still be in
+     place, which can either be empty or contain comments. 
+
+**** Restore a Lab
+     Script =restore= restores data backed up by =backup= script.  The
+     =restore= script takes the filename as argument and uses the supplied file
+     for restoration.
+
+     #+BEGIN_SRC 
+     % restore labbackup_<version>.tar
+     #+END_SRC
+
+     The =restore= script works with at least two versions of lab software when
+     there is more than one version of lab software available. 
+
+     1) =restore= script restores the lab from the backup file generated by the
+        =backup= script. Both the =restore= and =backup= are part of the same
+        release of the lab software.
+
+     2) =restore= script restores the lab from the backup file generated by the
+        =backup= script contained in the previous release of the lab software.
+
+     If restoration process requires certain services to be stopped or started,
+     then =restore= script takes care of all such requirements.
+     
+     If there is no restoration required for a lab, the script should still be in
+     place, which can either be empty or contain comments. 
+
+**** Test a Lab
+     When a lab is hosted, script =test= provides a mechanism to ascertain the
+     lab is fully functional.  These test cases are run immediately after the
+     lab is deployed and also at regular intervals. The developers are informed
+     of the failure in test cases with the test output.
+
+     A test script indicates either successful or unsuccessful execution of all
+     tests.  The output the test script is saved to a file named
+     =test_results.txt= in the same directory.
+
+** Tests
+*** Structure
+|-- tests
+|    -- system_tests
+|       -- <exp1>_tests
+|          -- test_1.txt
+|          -- test_2.txt
+|             ...
+|             ---
+|       -- <exp2>_tests
+|          -- test_1.txt
+|             ...
+|             ---
+|    -- functional_tests
+|       -- <exp1>_tests
+|          -- test_1.txt
+|          -- test_2.txt
+|             ...
+|             ---
+|       -- <exp2>_tests
+|          -- test_1.txt
+|             ...
+|             ---
+
+*** Systems Tests
+   System tests will capture availability, performance of lab software. 
+*** Functional Tests
+   Functional tests will capture the defined functionality of each experiment
+   and therefore a lab.
+
 * Virtualization
 * Install Git and Setup Emacs as an IDE
   This [[./installation-scripts/index.org][document]] lists all the steps to install git and emacs and configure
   emacs as an integrated development environment.
+
+* References
+**** Code Review Process
+- [[Code Review][https://en.wikipedia.org/wiki/Code_review]]
+- [[Case study on Code Review][http://smartbear.com/SmartBear/media/pdfs/best-kept-secrets-of-peer-code-review.pdf]]
+- [[Using Pull Requests in Github][https://help.github.com/articles/using-pull-requests/]]
+**** Literate
+    [[https://www.youtube.com/watch?v%3DdljNabciEGg][Literate Devops with Emacs]]
