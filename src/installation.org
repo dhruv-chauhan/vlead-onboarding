@@ -20,7 +20,7 @@
 
   3. Change directory to =src= folder
      #+begin_example
-     cd build/code/src/
+     cd code/src/
      #+end_example
 
   4. To configure proxy open file using
