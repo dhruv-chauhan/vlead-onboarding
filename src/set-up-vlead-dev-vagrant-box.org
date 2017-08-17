@@ -1,0 +1,69 @@
+#+TITLE: Steps to set up VLEAD development environment using an existing vagrant box
+#+AUTHOR: VLEAD
+#+DATE: [2017-08-17 Thu]
+#+SETUPFILE: ./org-templates/level-0.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+
+* Introduction
+  This document lists steps to set up VLEAD development
+  environment using an existing vagrant box.  This existing
+  vagrant box is created by VLEAD and contains all the
+  software required for VLEAD's development environment.
+
+* Assumptions
+  This set up assumes that vagrant is already set up on top
+  of virtualbox.  If the vagrant is set up on some other
+  virtualization, use [[https://github.com/sciurus/vagrant-mutate][vagrant-mutate]] to change the vagrant
+  box to work with that virtualization. 
+
+* Steps
+  1. Download the vagrant box.
+
+    #+BEGIN_EXAMPLE
+    wget http://files.vlabs.ac.in/downloads/vagrant-boxes/vlead-dev.box
+    #+END_EXAMPLE
+
+  2. Add the downloaded box to the vagrant list of boxes. 
+     #+BEGIN_EXAMPLE
+     vagrant box add vlead-dev vlead-dev.box --provider=virtualbox
+     #+END_EXAMPLE
+
+  3. Check if the box is added
+     #+BEGIN_EXAMPLE
+     vagrant box list
+     #+END_EXAMPLE
+
+  4. Create a directory =vlead-dev= to hold all the
+     initialization files for this environment and change to
+     that directory. 
+     #+BEGIN_EXAMPLE
+     mkdir vlead-dev
+     cd vlead-dev
+     #+END_EXAMPLE
+
+  5. Initialize vagrant environment for this new box. 
+     #+BEGIN_EXAMPLE
+     vagrant init vlead-dev
+     #+END_EXAMPLE
+
+  6. Edit the configuration file =Vagrantfile= to either use
+     forwarding port, private network or public network.
+
+  7. Boot up the machine
+     #+BEGIN_EXAMPLE
+     vagrant up
+     #+END_EXAMPLE
+  
+
+  8. Login to the machine.  The development environment is
+     enabled for the root user. 
+     #+BEGIN_EXAMPLE
+     vagrant ssh
+     sudo su -
+     #+END_EXAMPLE
+
+
+
