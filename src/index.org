@@ -35,7 +35,7 @@ development environment.
    which are usually used to host open-source software projects. As of
    2015, GitHub reports having over 11 million users and over 29.4
    million repositories, making it the largest host of source code in the
-   world. To now more about Github [[click here]]
+   world. To now more about Github [[https://github.com/about][click here]]
 ** Bitbucket 
    Bitbucket is a web-based hosting service for projects that use
    either the Mercurial (since launch) or Git (since October 2011)
@@ -46,7 +46,7 @@ development environment.
    users to join Bitbucket, three more users can be added, for eight
    users in total. Bitbucket is written in Python using the Django web
    framework.  It is similar to GitHub, which primarily uses Git. To
-   know more about Bitbucket [[click here]]
+   know more about Bitbucket [[https://bitbucket.org/product/features][Features]]
 ** Version control practices at VLEAD
    At VLEAD version control is used extensively. Both Github and
    Bitbucket are used. The purpose for which they are used differ
@@ -347,7 +347,7 @@ development environment.
    Functional tests will capture the defined functionality of each experiment
    and therefore a lab.
 
-* Virtualization
+*Virtualization
 * Install Git and Setup Emacs as an IDE
   This [[./installation-scripts/index.org][document]] lists all the steps to install git and emacs and configure
   emacs as an integrated development environment.

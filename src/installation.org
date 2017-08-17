@@ -56,6 +56,9 @@
      + Should I create a default set of package docs? Say =n= and press enter
      + Press enter
      + Press enter
+     + You probably don't want them to be included in the package. Do you want
+       me to list them?  Say =n= and press enter
+     + Should I exclude them from the package? Say =y= and press enter 
      + Copying files to the temparory directory ( 5-10 mins)
      + Once installation is done
 
@@ -65,8 +68,9 @@
      #+end_example
 
   9. List all the available packages on emacs and click on package to install.
+       M-x in which M = Alt key
      #+begin_example
-     M-x package-list-packages
+     M-x list-packages
      #+end_example
      
      From available packages install the following
@@ -77,10 +81,10 @@
      + js2-mode
      + auto-complete
      + jedi
-     + jedi:install-server
      + flycheck
      + python-mode
      + pylint
+     + To install jedi:install-server press M-x and type jedi:install-server.
      
   10. Close the emacs and reopen to check applied changes
 
