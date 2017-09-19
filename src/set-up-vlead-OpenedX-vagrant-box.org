@@ -175,8 +175,8 @@ end
      sudo /edx/bin/supervisorctl restart all
      #+END_EXAMPLE
 ** Reference links 
-   [[https://github.com/openedx-vlead/port-labs-to-openedx/blob/master/src/platform-install-configure/index.org#set-up-open-edx-platform][default user creadentials]]
-   [[https://github.com/openedx-vlead/port-labs-to-openedx/tree/master/src/platform-install-configure][More Information]]
+   1. [[https://github.com/openedx-vlead/port-labs-to-openedx/blob/master/src/platform-install-configure/index.org#set-up-open-edx-platform][default user creadentials]]
+   2. [[https://github.com/openedx-vlead/port-labs-to-openedx/tree/master/src/platform-install-configure][More Information]]
 * COMMENT Steps for setting up OpenedX platform with all vlabs courses
   1. Download the vagrant box.
 
