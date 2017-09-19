@@ -19,10 +19,9 @@
   Virtua-Box :: https://www.virtualbox.org/wiki/Linux_Downloads
   For vagrant, simply =sudo apt-get install vagrant=
 
-
 * Steps for setting up OpenedX platform without vlabs courses
-  1. Download the vagrant box.
 
+  1. Download the vagrant box.
     #+BEGIN_EXAMPLE
     wget http://files.vlabs.ac.in/downloads/vagrant-boxes/vagrant-images_20151221-dogwood-fullstack-rc2.box
     #+END_EXAMPLE
@@ -39,7 +38,7 @@
 
   4. Create a directory =vlead-openedx= to hold all the
      initialization files for this environment and change to
-     that directory. 
+     that directory.
      #+BEGIN_EXAMPLE
      mkdir vlead-openedx
      cd vlead-openedx
@@ -50,87 +49,19 @@
      vagrant init vlead-openedx
      #+END_EXAMPLE
 
-  6. Edit the configuration file =Vagrantfile= to either use
-     forwarding port, private network or public network. Use public
-     network. If you use public network you will be getting Local LAN
-     IP. It is to access Openedx platform or copy paste the following
-     content in Vagrantfile
-     
-     - Example Vagrantfile
-       #+BEGIN_EXAMPLE
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
+  6. Use public network for the Open edX machine.  To do
+     that, ensure =config.vm.network= is set to
+     =public_network= in the Vagrant file.
 
-# All Vagrant configuration is done below. The "2" in Vagrant.configure
-# configures the configuration version (we support older styles for
-# backwards compatibility). Please don't change it unless you know what
-# you're doing.
-Vagrant.configure("2") do |config|
-  # The most common configuration options are documented and commented below.
-  # For a complete reference, please see the online documentation at
-  # https://docs.vagrantup.com.
+     #+BEGIN_EXAMPLE
 
-  # Every Vagrant development environment requires a box. You can search for
-  # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "vlead-openedx"
+     # Create a public network, which generally matched to bridged network.
+     # Bridged networks make the machine appear as another physical device on
+     # your network.
+       
+     config.vm.network "public_network"
 
-  # Disable automatic box update checking. If you disable this, then
-  # boxes will only be checked for updates when the user runs
-  # `vagrant box outdated`. This is not recommended.
-  # config.vm.box_check_update = false
-
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine. In the example below,
-  # accessing "localhost:8080" will access port 80 on the guest machine.
-   #config.vm.network "forwarded_port", guest: 80, host: 80
-  # config.vm.network "forwarded_port", guest: 18010, host: 18010
-
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
-
-  # Create a public network, which generally matched to bridged network.
-  # Bridged networks make the machine appear as another physical device on
-  # your network.
-   config.vm.network "public_network"
-
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
-
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
-  # config.vm.provider "virtualbox" do |vb|
-  #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
-  #
-  #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
-  #
-  # View the documentation for the provider you are using for more
-  # information on available options.
-
-  # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
-  # such as FTP and Heroku are also available. See the documentation at
-  # https://docs.vagrantup.com/v2/push/atlas.html for more information.
-  # config.push.define "atlas" do |push|
-  #   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
-  # end
-
-  # Enable provisioning with a shell script. Additional provisioners such as
-  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
-  # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
-end
-       #+END_EXAMPLE
+     #+END_EXAMPLE
 
   7. Boot up the machine
      #+BEGIN_EXAMPLE
@@ -145,16 +76,20 @@ end
      vagrant ssh
      sudo su -
      #+END_EXAMPLE
-  10. After login to the machine, check the IP address using below
-      command.
+
+  10. Get the IP of the machine.  This is done by first
+      logging to the newly created machine and running the
+      command below. 
       #+BEGIN_EXAMPLE
       ifconfig 
       or 
       ip addr
       #+END_EXAMPLE
-     note down/remember the IP.
+     
   11. If your proxy is not allowing IPs, add the noted IP in browser
-      Preferences --> Adavnced-->Network-->settings in "No Proxy for"
+      Preferences --> Adavnced-->Network-->settings in "No
+      Proxy for"
+
   12. Access the edx platform from browser
       #+BEGIN_EXAMPLE
       http://<ipaddress>   for LMS
@@ -177,6 +112,7 @@ end
 ** Reference links 
    1. [[https://github.com/openedx-vlead/port-labs-to-openedx/blob/master/src/platform-install-configure/index.org#set-up-open-edx-platform][default user creadentials]]
    2. [[https://github.com/openedx-vlead/port-labs-to-openedx/tree/master/src/platform-install-configure][More Information]]
+
 * COMMENT Steps for setting up OpenedX platform with all vlabs courses
   1. Download the vagrant box.
 
