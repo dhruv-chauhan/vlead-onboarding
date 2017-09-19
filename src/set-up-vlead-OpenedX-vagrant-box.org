@@ -1,0 +1,153 @@
+#+TITLE: Steps to set up VLEAD development environment for OpenedX using an existing vagrant box
+#+AUTHOR: VLEAD
+#+DATE: [2017-08-17 Thu]
+#+SETUPFILE: ./org-templates/level-0.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+
+* Introduction
+  This document lists steps to set up VLEAD development environment
+  for OpenedX using an existing vagrant box.
+
+* Assumptions
+  This set up assumes that vagrant is already set up on top
+  of virtualbox. If vagrant and Virtual-Box are not installed, Please
+  install and go to the next steps.
+  
+  Virtua-Box :: https://www.virtualbox.org/wiki/Linux_Downloads
+  For vagrant, simply =sudo apt-get install vagrant=
+
+
+* Steps for setting up OpenedX platform without vlabs courses
+  1. Download the vagrant box.
+
+    #+BEGIN_EXAMPLE
+    wget http://files.vlabs.ac.in/downloads/vagrant-boxes/vagrant-images_20151221-dogwood-fullstack-rc2.box
+    #+END_EXAMPLE
+
+  2. Add the downloaded box to the vagrant list of boxes. 
+     #+BEGIN_EXAMPLE
+     vagrant box add vlead-openedx vagrant-images_20151221-dogwood-fullstack-rc2.box --provider=virtualbox
+     #+END_EXAMPLE
+
+  3. Check if the box is added
+     #+BEGIN_EXAMPLE
+     vagrant box list
+     #+END_EXAMPLE
+
+  4. Create a directory =vlead-openedx= to hold all the
+     initialization files for this environment and change to
+     that directory. 
+     #+BEGIN_EXAMPLE
+     mkdir vlead-openedx
+     cd vlead-openedx
+     #+END_EXAMPLE
+
+  5. Initialize vagrant environment for this new box. 
+     #+BEGIN_EXAMPLE
+     vagrant init vlead-openedx
+     #+END_EXAMPLE
+
+  6. Edit the configuration file =Vagrantfile= to either use
+     forwarding port, private network or public network. Use public
+     network. If you use public network you will be getting Local LAN
+     IP. It is to access Openedx platform or copy paste the following
+     content in Vagrantfile
+     
+     - Example Vagrantfile
+       #+BEGIN_EXAMPLE
+       
+       #+END_EXAMPLE
+
+  7. Boot up the machine
+     #+BEGIN_EXAMPLE
+     vagrant up
+     #+END_EXAMPLE
+
+     At this time it would be prompting for network connection. Choose
+     any network by typing 1/2/3 etc.
+
+  9. To login to the machine using below commands.
+     #+BEGIN_EXAMPLE
+     vagrant ssh
+     sudo su -
+     #+END_EXAMPLE
+  10. After login to the machine, check the IP address using below
+      command.
+      #+BEGIN_EXAMPLE
+      ifconfig 
+      or 
+      ip addr
+      #+END_EXAMPLE
+     note down/remember the IP.
+  11. If your proxy is not allowing IPs, add the noted IP in browser
+      Preferences --> Adavnced-->Network-->settings in "No Proxy for"
+  12. Access the edx platform from browser
+      #+BEGIN_EXAMPLE
+      http://<ipaddress>   for LMS
+      http://<ipaddress>:18010   for CMS/Studio
+      #+END_EXAMPLE
+  
+** Default user and password 
+   This vlead-openedx box has default user and password
+   #+BEGIN_EXAMPLE
+   username : staff@example.com
+   password: edx
+   #+END_EXAMPLE
+   These credentials used for both LMS and CMS/Studio
+** Enable X_FRAME_OPTION in Ed platform
+   - [[https://github.com/vlead/vlabs-landing-pages/issues/7][Refer this link]] at the end of the issue
+   - Restart all edx services
+     #+BEGIN_EXAMPLE
+     sudo /edx/bin/supervisorctl restart all
+     #+END_EXAMPLE
+** Reference links 
+   [[https://github.com/openedx-vlead/port-labs-to-openedx/blob/master/src/platform-install-configure/index.org#set-up-open-edx-platform][default user creadentials]]
+   [[https://github.com/openedx-vlead/port-labs-to-openedx/tree/master/src/platform-install-configure][More Information]]
+* COMMENT Steps for setting up OpenedX platform with all vlabs courses
+  1. Download the vagrant box.
+
+    #+BEGIN_EXAMPLE
+    wget http://files.vlabs.ac.in/downloads/vagrant-boxes/vagrant-images-dogwood-vlabs.box
+    #+END_EXAMPLE
+
+  2. Add the downloaded box to the vagrant list of boxes. 
+     #+BEGIN_EXAMPLE
+     vagrant box add vlead-openedx vagrant-images-dogwood-vlabs.box --provider=virtualbox
+     #+END_EXAMPLE
+
+  3. Check if the box is added
+     #+BEGIN_EXAMPLE
+     vagrant box list
+     #+END_EXAMPLE
+
+  4. Create a directory =vlabs-openedx= to hold all the
+     initialization files for this environment and change to
+     that directory. 
+     #+BEGIN_EXAMPLE
+     mkdir vlabs-openedx
+     cd vlabs-openedx
+     #+END_EXAMPLE
+
+  5. Initialize vagrant environment for this new box. 
+     #+BEGIN_EXAMPLE
+     vagrant init vlabs-openedx
+     #+END_EXAMPLE
+
+  6. Edit the configuration file =Vagrantfile= to either use
+     forwarding port, private network or public network.
+
+  7. Boot up the machine
+     #+BEGIN_EXAMPLE
+     vagrant up
+     #+END_EXAMPLE
+  
+
+  8. Login to the machine.  The development environment is
+     enabled for the root user. 
+     #+BEGIN_EXAMPLE
+     vagrant ssh
+     sudo su -
+     #+END_EXAMPLE
