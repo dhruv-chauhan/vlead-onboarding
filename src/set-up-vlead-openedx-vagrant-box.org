@@ -103,7 +103,7 @@
    password: edx
    #+END_EXAMPLE
    These credentials used for both LMS and CMS/Studio
-** Enable X_FRAME_OPTION in Ed platform
+** Enable X_FRAME_OPTION in Open edX platform
    1. Open
       =/edx/app/edxapp/edx-platform/common/djangoapps/third_party_auth/decorators.py=
       and change =x_frame_option= from =DENY= to =ALLOW= in
