@@ -1,0 +1,131 @@
++TITLE: SETTING UP THE MACHINE FOR VLEAD - DEVELOPMENT  
+#+AUTHOR: VLEAD
+#+DATE: [2015-10-27 Tue]
+#+PROPERTY: results output
+#+PROPERTY: exports code
+#+SETUPFILE: ../org-templates/level-1.org
+#+options: ^:nil
+
+* Introduction
+  This document provides and alternate way of setting up the vlead-dev
+  environment.
+
+* Assumptions
+  This set up assumes that vagrant is already set up on top of
+  virtualbox.  If the vagrant is set up on some other virtualization,
+  use [[https://github.com/sciurus/vagrant-mutate][vagrant-mutate]] to change the vagrant box to work with that
+  virtualization.
+
+* Steps
+  1. The following command should be run after entering the desired
+     working directory, it initialises the =trusty64 vagrant box=.
+     #+BEGIN_EXAMPLE
+       vagrant init ubuntu/trusty64 --box-version 20170918.0.1
+     #+END_EXAMPLE
+
+  2. Then the =vagrant box= is brought up using 
+     #+BEGIN_EXAMPLE
+       vagrant up
+     #+END_EXAMPLE
+
+  3. The =vagrant brought= is brought online and connected to the
+     remote machine using
+     #+BEGIN_EXAMPLE
+       vagrant ssh
+     #+END_EXAMPLE
+
+  4. The Following commmand updates the new =Ubuntu Virtual Machine=
+    #+BEGIN_SRC shell :tangle dev-env-setup.sh :eval no
+      #!/bin/bash
+      sudo apt-get upgrade
+      if [[ $? -ne 0 ]]; then
+      echo "problem executing sudo apt-get upgrade"
+      exit 1
+      fi
+    #+END_SRC
+
+  5. The following will setup =zsh= in the machine
+    #+BEGIN_SRC shell :tangle dev-env-setup.sh :eval no
+      sudo apt-get install zsh
+      if [[ $? -ne 0 ]]; then
+          echo "problem executing sudo apt-get install zsh"
+          exit 1
+      fi
+    #+END_SRC
+
+  6. Sets the required options for =zsh=
+    #+BEGIN_SRC shell :tangle dev-env-setup.sh :eval no
+      chsh -s /usr/bin/zsh
+      if [[ $? -ne 0 ]]; then
+          echo "problem executing chsh -s /usr/bin/zsh"
+          exit 1
+      fi
+    #+END_SRC
+
+  7. Installs =git= and sets it up on the machine
+    #+BEGIN_SRC shell :tangle dev-env-setup.sh :eval no
+      sudo apt-add-repository ppa:git-core/ppa
+      if [[ $? -ne 0 ]]; then
+          echo "problem executing sudo apt-add-repository ppa:git-core/ppa"
+          exit 1
+      fi
+      sudo apt-get install git
+      if [[ $? -ne 0 ]]; then
+          echo "problem executing sudo apt-get install git"
+          exit 1
+      fi
+    #+END_SRC
+
+  8. Installs =python= package manager
+    #+BEGIN_SRC shell :tangle dev-env-setup.sh :eval no
+    sudo apt-get -y install python-pip
+    if [[ $? -ne 0 ]]; then
+        echo "problem executing sudo apt-get -y install python-pip"
+        exit 1
+    fi
+    #+END_SRC
+
+  9. Sets up =virtualenv= on the machine
+   #+BEGIN_SRC shell :tangle dev-env-setup.sh :eval no
+   sudo -H pip install virtualenv
+   if [[ $? -ne 0 ]]; then
+       echo "problem executing sudo -H pip install virtualenv"
+       exit 1
+   fi
+   #+END_SRC
+
+  10. Sets up a virtual environment wrapper 
+    #+BEGIN_SRC shell :tangle dev-env-setup.sh :eval no
+    sudo -H pip install virtualenvwrapper
+    if [[ $? -ne 0 ]]; then
+        echo "problem executing sudo -H pip install virtualenvwrapper"
+        exit 1
+    fi
+    #+END_SRC
+
+  11. Sets the required path location in the =.zshrc= file
+    #+BEGIN_SRC shell :tangle dev-env-setup.sh :eval no
+    echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.zshrc
+    if [[ $? -ne 0 ]]; then
+        echo "problem executing echo 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.zshrc"
+        exit 1
+    fi
+    #+END_SRC
+
+  12. Installs =emacs=
+    #+BEGIN_SRC shell :tangle dev-env-setup.sh :eval no
+    sudo apt-get install emacs24
+    if [[ $? -ne 0 ]]; then
+        echo "problem executing sudo apt-get install emacs24"
+        exit 1
+    fi
+    #+END_SRC
+
+  13. Installs =npm= package manager
+    #+BEGIN_SRC shell :tangle dev-env-setup.sh :eval no
+    sudo apt-get install npm
+    if [[ $? -ne 0 ]]; then
+        echo "problem executing sudo apt-get install npm"
+        exit 1
+    fi
+    #+END_SRC
