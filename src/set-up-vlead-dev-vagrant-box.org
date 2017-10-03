@@ -67,3 +67,34 @@
 
 
 
+* Trouble Shooting
+** Vagrant ssh authentication failure
+   #+BEGIN_EXAMPLE
+  default: SSH username: vagrant
+  default: SSH auth method: private key
+  default: Error: Connection timeout. Retrying...
+  default: Error: Connection timeout. Retrying...
+   #+END_EXAMPLE
+
+   The solution is:
+  
+   1. Add the following lines to the Vagrantfile:
+      #+BEGIN_EXAMPLE
+      Vagrant.configure("2") do |config|
+        config.ssh.private_key_path = "~/.ssh/id_rsa"
+        config.ssh.forward_agent = true
+      end
+      #+END_EXAMPLE
+
+      where /config.ssh.private_key_path/ is your(host)
+      local private key. Your private key must be available
+      to the local ssh-agent. You can check with =ssh-add
+      -L=.  If it's not listed, add it with =ssh-add
+      ~/.ssh/id_rsa=.
+
+      Don't forget to add your public key to
+      =~/.ssh/authorized_keys= on the Vagrant VM. You can do
+      it by copy-and-pasting or using a tool like
+      ssh-copy-id
+
+
